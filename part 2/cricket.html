@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part 2 - Field of Crickets</title>
+    <style>
+        html, body {
+            height: 100%;
+            padding: 30px;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+            width: 50%;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            font-family: "Arial Black";
+            font-size: 18px;
+        }
+
+        button {
+            font-family: "Arial Black";
+            font-size: 18px;
+            background-color: white;
+            border-color: forestgreen;
+        }
+
+        button:hover {
+            background-color: green;
+            color: white;
+        }
+        p{
+            font-family: "Arial";
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<button id="cric">cricket</button>
+<button onclick="location.href='../index.html';">go back</button>
+<br><br>
+<a><img src="https://64.media.tumblr.com/8e08b33078ccddd4790b12c8e3e06f5b/tumblr_pggquyaqNt1qj51jko1_1280.gif"></a>
+<p>For this part of the lab I chose to model a cricket sound. I mostly followed the description in the book, but I had a
+    lot of trouble making the cricket noise sound less digital.<br><br>
+
+    My cricket noise can be broken down into 3 parts: the cricket frequencies, the phasor, and the AM synthesis. The
+    cricket frequencies are variables fund, part, and low. The fundamental and partial frequencies are the main high
+    pitched cricket noise. These I found in the book, however I decided to go with a fundamental frequency of 4000 Hz
+    instead of 4500 like the book says because that sounded more realistic. However, the 4500 Hz sounds best when
+    listened through headphones. Next, I chose to add a low frequency (not in book) because when I looked up cricket
+    noises they all seemed to have this very low pitched hum to them. The low frequency is best heard through
+    headphones, and it models the muffled friction caused by the cricket rubbing its legs against its wings. The phasor
+    is also from the book and controls the rate at which the cricket chirps. Finally, the AM synthesis applied to the
+    frequencies models how close the ridges on the crickets wings are.<br><br>
+
+    While programming, I found that the cricket sounded too digital. To fix this I tried to add an LPF to muffle some of
+    the high frequencies and muddle the sound as crickets are usually under leaves. This did not work. I then tried an
+    all pass filter to displace the frequencies and cause a phasing effect. This did not work either, so I tried to add
+    some spacialization with delay. The delay, however, made the crickets sound weird due to phase cancelation. I tried
+    a bunch of frequencies, but didn't like any. So, I finally settled on adding the unfiltered brown noise over top.
+    This was meant to make the listener feel like they were outside with a cricket around them.<br><br>
+
+    My biggest struggle came right before submitting. I wanted to show someone my cricket, and played the audio out
+    loud. It sounded horrible. The whole time I had been coding with noise cancelling headphones. When I played my sound
+    out loud, the cricket was way too high-pitched and the low frequency was lost. For this, I lowered the frequency and
+    the global gain. This helped. </p>
+</body>
+<script src="cricket.js"></script>
+</html>
